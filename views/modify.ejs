@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Book</title>
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>
+      Add new book
+    </h1>
+
+    <% if (locals.book) { %>
+       <% for(let b of book) {%>
+      <form id="editForm" method="post" action="/edit/<%= b.id %>">
+        <input type="text" name="bookname" value="<%=b.bookname %>">
+        <textarea maxlength="100" name="content" rows="10"><%=b.notes %></textarea>
+        <input type="text" name="author" value="<%=b.author %>">
+        <input type="text" name="dateread" value="<%=b.dateread %>">
+        <input type="text" name="recommendation" value="<%=b.recommend %>">
+        <button class="full-width" type="submit">
+          <%= Submit %>
+        </button>
+      </form>
+      <% }%>
+      <% } else {%>
+        <form id="newPostForm" method="post" action="/newbook">
+          <input type="text" name="bookname" placeholder="Title" required>
+          <textarea name="notes" placeholder="Notes" required rows="10"></textarea>
+          <input type="text" name="author" placeholder="Author" required>
+          <input type="text" name="dateread" placeholder="Date Read" required>
+          <input type="text" name="isbn" placeholder="ISBN" required>
+          <input type="text" name="recommend" placeholder="recommendation" required>
+          <button class="full-width" type="submit">
+            <%= Submit %>
+          </button>
+      </form>
+        <% } %>
+
+</body>
+
+</html>

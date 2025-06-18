@@ -1,0 +1,54 @@
+<%- include('partials/header.ejs'); -%>
+
+<div>
+    <h1>About Books I've Read</h1>
+    <p>Sorted with oldest first. Sort by
+            <a href="/book/sort=recommend">best</a>
+            <a href="/book/sort=recency">newest</a>
+    </p>
+</div>
+<section id="allbooks">
+  <a id="newPostBtn" href="/new">Add new book</a>
+  <% for(let book of listBooks) {%>
+    <div class="box" title=" <%= book.bookname %> by <%= book.author %>">
+      <figure>
+          <img src="/images/<%= book.isbn %>-S.jpg" alt="<%= book.bookname %> by <%= book.author %>">
+        </figure>  
+      <h2><%= book.bookname %> by <%= book.author %></h2>
+        
+        <small> DATE READ: <%= book.dateread %></small>
+        <!-- <small> ISBN: <%= book.isbn %></small> -->
+         <small> HOW STRONGLY I RECOMMEND IT: <%= book.recommend %>/10 </small>
+        <p><%= book.notes %></p>
+        <a class="edit" href="/edit/<%= book.id %>">Edit</a>
+        <a class="delete" href="/delete/<%= book.id %>">Delete</a>
+    </div>
+<% }%>
+
+ <!-- <% if (locals.book) { %>
+      <form id="editForm" method="post" action="/edit/<%= book.id %>">
+        <input type="text" name="title" value="<%=book.bookName %>">
+        <textarea name="content" rows="10"><%=book.notes %></textarea>
+        <input type="text" name="author" value="<%=book.author %>">
+        <button class="full-width" type="submit">
+          Submit
+        </button>
+      </form>
+      <% } else {%>
+        <form id="newPostForm" method="post" action="/newbook">
+          <input type="text" name="title" placeholder="Title" required>
+          <textarea name="notes" placeholder="Notes" required rows="10"></textarea>
+          <input type="text" name="author" placeholder="Author" required>
+          <input type="text" name="dateread" placeholder="Date Read" required>
+          <button class="full-width" type="submit">
+            Submit
+          </button>
+        </form>
+        <% } %> -->
+ 
+        
+</section>
+
+
+
+<%- include('partials/footer.ejs'); %>
