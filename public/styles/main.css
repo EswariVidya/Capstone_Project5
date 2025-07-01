@@ -8,9 +8,7 @@ a.masthead {
     margin-bottom: 1em margin0;
 }
 
-a.project {
-  
-}
+
 
 body,
 h1,
@@ -91,7 +89,7 @@ textarea:focus {
   border-color: #007bff;
 }
 
-a:not(.masthead ),
+a:not(.masthead):not(#project),
 button {
   text-decoration: none;
   background-color: #007bff;
@@ -113,7 +111,7 @@ button.full-width {
   width: 100%;
 }
 
-a:not(.masthead) ,
+a:not(.masthead):not(#project),
 button:hover{
   background-color: #0056b3;
 }
@@ -186,4 +184,22 @@ a:visited {
 footer {
   margin-top: 20px;
   text-align: center;
+}
+
+dt {
+    margin-top: 2em;
+    font-size: 1.2em;
+}
+
+dd {
+      margin-bottom: 1em;
+}
+
+
+#project {
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1em;
+    margin-bottom: 1em margin0;
+    /* background-color: white;   */
 }
