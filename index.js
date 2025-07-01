@@ -134,6 +134,9 @@ app.get("/vidya", (req, res) => {
     res.render("Vidya.ejs");
 });
 
+app.get("/crochet", (req,res) => {
+    res.render("crochet.ejs")
+})
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 })
