@@ -24,7 +24,7 @@ app.use(express.static("public"));  //access images and css files
 app.use(bodyParser.urlencoded({ extended: true })); //read request body
 
 let books = [
-    { id: 1, bookName: "The Silent Patient", author: "Alex Michaelides", dateread: "2024-27-06", notes: "", isbn: "9781250237170", recommend: "7" },
+    { id: 1, bookName: "The Silent Patient", author: "Alex Michaelides", dateread: "2024-06-27", notes: "", isbn: "9781250237170", recommend: "7" },
     // { id: 2, bookName: "The Housemaid", author: "Freida McFadden", dateread: "2024-17-09", notes: "", isbn: "1538742578"},
     // { id: 3, bookName: "It Ends With Us", author: "Colleen Hoover", dateread: "2024-19-11", notes: "", isbn: "9781471156267"},
     // { id: 4, bookName: "Surrounded by Idiots", author: "Thomas Erikson", dateread: "2024-28-07", notes: "", isbn: "9781250179944"},
@@ -103,8 +103,9 @@ app.post("/edit/:id", async (req, res) => {
         const updatedbookname = (req.body.bookname) || existingBook.bookName;
         const updatednotes = (req.body.content) || existingBook.notes;
         const updatedauthor = (req.body.author) || existingBook.author;
-        const updateddateread = (req.body.dateread) || existingBook.dateread;
-        const updatedrecommend = (req.body.recommend) || existingBook.recommend;
+        const actualdate = (new Date(req.body.dateread)).toISOString(); 
+        const updateddateread =      actualdate || existingBook.dateread;       
+        const updatedrecommend = (req.body.recommendation) || existingBook.recommend;
 
         await db.query("UPDATE bookslist SET bookname = ($2), notes = ($3), author = ($4), dateread = ($5), recommend = ($6) WHERE id = ($1)", [id, updatedbookname, updatednotes, updatedauthor, updateddateread, updatedrecommend]);
 
@@ -134,9 +135,9 @@ app.get("/vidya", (req, res) => {
     res.render("Vidya.ejs");
 });
 
-app.get("/crochet", (req,res) => {
-    res.render("crochet.ejs")
-})
+app.get("/crochet", (req, res) => {
+    res.render("crochet.ejs");
+});
 app.listen(port, () => {
     console.log(`Server is listening on port ${port}`);
 })

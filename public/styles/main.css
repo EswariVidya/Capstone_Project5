@@ -6,16 +6,14 @@ a.masthead {
     font-style: normal;
     line-height: 1em;
     margin-bottom: 1em margin0;
+        cursor: pointer;
 }
-
-
 
 body,
 h1,
 h2,
 p,
 ul,
-li,
 form,
 input,
 textarea {
@@ -45,6 +43,11 @@ body {
 .vidya {
   text-align: center;
   background-color: #fcb900;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 /* .box {
   float: left;
@@ -53,12 +56,15 @@ h1 {
   font-size: 2.5em;
   margin-bottom: 20px;
   color: #444;
+    font-family: valkyrie_c4;
 }
 
 h2 {
   font-size: 1.5em;
   margin-bottom: 10px;
   color: #555;
+  font-family: valkyrie_c4;
+
 }
 
 p,
@@ -117,16 +123,15 @@ button:hover{
 }
 
 ul {
-  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 li {
-  padding: 20px 0;
-  border-bottom: 1px solid #eee;
-}
-
-li:last-child {
-  border-bottom: none;
+  /* padding: 20px 0;
+  border-bottom: 1px solid #eee; */
+  display: flex; flex-direction: column; 
 }
 
 a.edit {
